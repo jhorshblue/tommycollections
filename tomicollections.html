@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>tommycollections</title>
+  <style>
+    /* ===== RESET ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; background: #ef9b9b; color: #333; }
+
+    /* ===== LOADER ===== */
+    #loader {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: #ef8b8b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    .spinner {
+      border: 5px solid #efdbdb;
+      border-top: 5px solid #333;
+      border-radius: 50%;
+      width: 50px; height: 50px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background: #413c3c;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #eee;
+    }
+    header img {
+      height: 60px;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #ef9b9b;
+      font-weight: bold;
+    }
+     a:hover {
+        color: #ededed;
+        text-decoration: underline;
+        }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .hamburger span {
+      height: 3px;
+      width: 25px;
+      background: #ef9b9b;
+      margin: 4px 0;
+    }
+    /* Mobile nav */
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background: #eae8e8;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      width: 200px;
+      border: 1px solid #e47272;
+    }
+    .mobile-nav a {
+      padding: 10px;
+      border-bottom: 1px solid #d86262;
+      color: #242121;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .mobile-nav a:hover {
+      color: #e47272;
+    }
+
+    /* ===== HERO ===== */
+    /* #hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 50px;
+      background: #ef9b9b;
+      flex-wrap: wrap;
+    }
+    .hero-text { max-width: 500px; }
+    .hero-text h1 { font-size: 3.5rem; font-family: Poppins; margin-bottom: 15px; }
+    .hero-text p { margin-bottom: 20px; }
+    .btn {
+      background: #2d2b2c;
+      font-weight: bolder;
+      color: #ef9b9b;
+      font-size: x-large;
+      font-weight: bolder;
+      padding: 10px 20px;
+      font-family: Poppins;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+    .hero-image img {
+      width: 500px;
+      border-radius: 5px;
+      max-width: 100%;
+      background: #ddd;
+    } */
+        .hero {
+      background: #ef8b8b;
+      color: white;
+      text-align: center;
+      font-family: Poppins;
+      padding: 100px 20px;
+      display: flex;
+      font-size: x-small;
+      font-weight: bolder;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 80vh; /* makes it vertically centered */
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .hero .btn {
+      background: rgb(4, 4, 4);
+      color: #eb7b7b;
+      padding: 15px 30px;
+      text-decoration: none;
+      font-size: x-large;
+      border-radius: 10px;
+      
+    }
+
+    .hero .btn:hover {
+      color: #fffdfd;
+    }
+
+
+    /* ===== SERVICES ===== */
+    #services {
+      display: flex;
+      justify-content: space-around;
+      padding: 50px 20px;
+      background: #f8f8f8;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+    .service {
+      text-align: center;
+      max-width: 250px;
+    }
+    .service img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      object-fit: cover;
+      background: #ddd;
+    }
+
+    /* #services {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 50px 0;
+}
+
+.service {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 250px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  opacity: 0; /* start invisible */
+  transform: translateY(40px); /* start slightly down 
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.service.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.service img {
+  width: 100px;
+  margin-bottom: 15px;
+}
+
+.service h3 {
+  margin-bottom: 10px;
+}
+
+.service p {
+  font-size: 14px;
+  color: #666;
+} */
+
+
+    /* ===== GALLERY ===== */
+    #gallery {
+      padding: 50px 30px;
+      text-align: center;
+    }
+    #gallery h2 {
+      margin-bottom: 20px;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+    .gallery-grid img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      background: #ddd;
+      display: block;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #393434;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+    .social-icons img {
+      width: 24px;
+      margin: 0 5px;
+      filter: invert(1);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .hamburger { display: flex; }
+      #hero {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-text { max-width: 100%; }
+      #services { flex-direction: column; align-items: center; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Loader -->
+  <div id="loader">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <a href="#">
+        <img src="images/tclogo.JPG" alt="Tomi Collections Logo">
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav>
+      <a href="#hero">Home</a>
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Hamburger -->
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav" id="mobileNav">
+      <a href="#hero">Home</a>
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <!-- <div class="hero-text">
+      <h1>Tomi Collections</h1>
+      <p>10% Discount on all orders</p>
+      <a href="#appointment" class="btn">Book an Appointment</a>
+    </div>
+    <div class="hero-image">
+      <img src="images/tcimage1.jpg" alt="Man in a suit">
+    </div> -->
+    <div class="hero">
+  <h1>Welcome to tommycollections</h1>
+  <p>Everything Clothings | Accessories | Households | Appliances.</p>
+  <h2 style="font-size: 28px; font-weight: bold; margin: 20px 0; color: rgb(15, 15, 15);">
+    Don’t miss out—get your desired items at pocket-friendly prices!
+  </h2>
+  <a href="https://wa.me/08142363526" class="btn">Book on WhatsApp</a>
+</div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services">
+    <div class="service">
+      <img src="images/tcimage10.png" alt="Clothes">
+      <h3>Clothings</h3>
+      <p>Clothes | Shoes | Bags.</p>
+    </div>
+    <div class="service">
+      <img src="images/tcimage11.png" alt="Bags">
+      <h3>Appliances</h3>
+      <p>Mechanical | Electrical | Digital </p>
+    </div>
+    <div class="service">
+      <img src="images/tcimage12.png" alt="Shoes">
+      <h3>Household</h3>
+      <p>Kitchen | Cleaning | Laundry</p>
+    </div>
+    <div class="service">
+      <img src="images/tcimage25.png" alt="Shoes">
+      <h3>Decorative</h3>
+      <p>Wrist-watches </p>
+    </div>
+        <div class="service">
+      <img src="images/tcimage16.png" alt="Shoes">
+      <h3>Fabrics</h3>
+      <p>Adire | Ankara</p>
+    </div>
+        <div class="service">
+      <img src="images/tcimage19.png" alt="Shoes">
+      <h3>Gift Items</h3>
+      <p>Souvenirs | Decorative sets </p>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery">
+    <h2>#TomiCollections</h2>
+    <div class="gallery-grid">
+      <img src="/images/tcimage13.png" alt="">
+      <img src="/images/tcimage2.jpg" alt="">
+      <img src="images/tcimage27.jpeg" alt="">
+      <img src="images/tcimage4.jpg" alt="">
+      <img src="images/tcimage5.jpg" alt="">
+      <img src="images/tcimage6.jpg" alt="">
+      <img src="images/tcimage7.jpg" alt="">
+      <img src="/images/tcimage26.jpeg" alt="">
+      <img src="/images/tcimage14.jpeg" alt="">
+      <img src="images/tcimage1.jpg" alt="">
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="social-icons">
+      <a href="https://www.facebook.com/olasehinde.jesutomi" target="_blank"> <img src="images/tcimage20.png" alt="Facebook"></a>
+      <a href="https://wa.me/08142363526"> <img src="images/tcimage22.png" alt="Whatsapp"></a>
+      <a href="https://www.instagram.com/olasehindejesutomie" target="_blank"> <img src="images/tcimage21.png" alt="Instagram"></a>
+    </div>
+    <p>&copy; 2025 Tomi Collections. All rights reserved. <br> Powered By JoCreativ </p>
+  </footer>
+
+  <script>
+    // Loader hide after content loads
+    window.addEventListener('load', function() {
+      document.getElementById('loader').style.display = 'none';
+    });
+
+    // Mobile nav toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    hamburger.addEventListener('click', () => {
+      mobileNav.style.display = mobileNav.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+  //  document.addEventListener("DOMContentLoaded", function() {
+  //     const services = document.querySelectorAll(".service");
+
+  //     const observer = new IntersectionObserver(entries => {
+  //       entries.forEach(entry => {
+  //         if (entry.isIntersecting) {
+  //           entry.target.classList.add("show");
+  //         }
+  //       });
+  //     }, { threshold: 0.2 });
+
+  //     services.forEach(service => {
+  //       observer.observe(service);
+  //     });
+  //   }); 
+  </script>
+</body>
+</html>
